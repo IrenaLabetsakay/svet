@@ -5,9 +5,8 @@ import { BOLT_PATH } from "@/components/shared/boltPath";
 export default function FooterLightningEffect() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-      {/* Ambient glow blobs */}
+      {/* Ambient glow blob */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-80 h-80 bg-amber-400 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-64 h-64 bg-amber-400 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
       </div>
 
@@ -23,7 +22,7 @@ export default function FooterLightningEffect() {
             </feMerge>
           </filter>
           <filter id="footer-bolt-glow-lg" x="-60%" y="-60%" width="220%" height="220%">
-            <feGaussianBlur stdDeviation="10" result="blur" />
+            <feGaussianBlur stdDeviation="6" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -32,55 +31,29 @@ export default function FooterLightningEffect() {
         </defs>
       </svg>
 
-      {/* ── Large background bolt (left side, gentle pulse) ── */}
+      {/* ── Large background bolt (right side, gentle pulse, mirrored) ── */}
       <svg
         viewBox="0 0 60 120"
         fill="none"
-        className="absolute left-[4%] sm:left-[8%] top-1/2 -translate-y-1/2 h-[75%] max-h-64 w-auto -scale-x-100"
-        style={{ animation: "lightning-pulse 3.5s ease-in-out infinite" }}
+        overflow="visible"
+        className="absolute right-[4%] sm:right-[8%] top-1/2 -translate-y-1/2 h-[75%] max-h-64 w-auto scale-x-100"
+        style={{ animation: "lightning-pulse 3.5s 1.75s ease-in-out infinite" }}
         aria-hidden="true"
       >
         <path d={BOLT_PATH} fill="#F59E0B" filter="url(#footer-bolt-glow-lg)" />
       </svg>
 
-      {/* ── Flash bolt 1 — top-left area ── */}
+      {/* ── Flash bolt — top-right area ── */}
       <svg
         viewBox="0 0 60 120"
         fill="none"
-        className="absolute left-[12%] sm:left-[18%] top-[10%] h-[30%] max-h-28 w-auto -scale-x-100"
-        style={{ animation: "lightning-flash 8s 1s ease-in-out infinite", opacity: 0 }}
+        className="absolute right-[12%] sm:right-[18%] top-[10%] h-[30%] max-h-28 w-auto scale-x-100"
+        style={{ animation: "lightning-flash 8s 4s linear infinite", opacity: 0 }}
         aria-hidden="true"
       >
         <path d={BOLT_PATH} fill="#FDE68A" filter="url(#footer-bolt-glow)" />
       </svg>
 
-      {/* ── Flash bolt 2 — lower-left area, delayed ── */}
-      <svg
-        viewBox="0 0 60 120"
-        fill="none"
-        className="absolute left-[2%] sm:left-[4%] bottom-[15%] h-[25%] max-h-24 w-auto -scale-x-100"
-        style={{ animation: "lightning-flash 8s 5s ease-in-out infinite", opacity: 0 }}
-        aria-hidden="true"
-      >
-        <path d={BOLT_PATH} fill="#FDE68A" filter="url(#footer-bolt-glow)" />
-      </svg>
-
-      {/* ── Subtle horizontal arc lines ── */}
-      <svg
-        viewBox="0 0 300 10"
-        fill="none"
-        className="absolute left-0 top-1/3 w-1/2 sm:w-2/5 max-w-xs"
-        style={{ animation: "lightning-flash 8s 3s ease-in-out infinite", opacity: 0 }}
-        aria-hidden="true"
-      >
-        <polyline
-          points="0,5 40,2 90,8 150,1 200,7 260,3 300,5"
-          stroke="#FCD34D"
-          strokeWidth="1.5"
-          fill="none"
-          filter="url(#footer-bolt-glow)"
-        />
-      </svg>
     </div>
   );
 }

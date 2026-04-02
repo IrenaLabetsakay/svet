@@ -16,7 +16,7 @@ html {
   0%, 12%, 100% { opacity: 0; }
   2%  { opacity: 1; }
   5%  { opacity: 0.15; }
-  8%  { opacity: 0.95; }
+  8%  { opacity: 0.9; }
 }
 
 @keyframes lightning-pulse {
