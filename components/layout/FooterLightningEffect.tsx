@@ -1,10 +1,16 @@
 /* Decorative animated lightning bolts for the Footer section background */
 
-const BOLT_PATH = "M 45 0 L 12 65 L 32 65 L 2 120 L 58 55 L 35 55 Z";
+import { BOLT_PATH } from "@/components/shared/boltPath";
 
 export default function FooterLightningEffect() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+      {/* Ambient glow blobs */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-0 left-0 w-80 h-80 bg-amber-400 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-amber-400 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+      </div>
+
       {/* Shared SVG glow filter */}
       <svg className="absolute w-0 h-0">
         <defs>
