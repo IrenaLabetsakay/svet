@@ -55,7 +55,7 @@ export default function Header() {
               +7 (000) 000-00-00
             </a>
             <button
-              className="md:hidden text-slate-300 hover:text-white"
+              className="md:hidden text-slate-300 hover:text-white cursor-pointer"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Меню"
             >
